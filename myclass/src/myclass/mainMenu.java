@@ -34,5 +34,17 @@ public class mainMenu {
             
 
     }
+    
+    public static void presensi(int presensi) {
+        System.out.println("Selamat Datang Mahasiswa FST");
+        System.out.println("Silakan Presensi ");
+        System.out.println("1. Hadir \n2. Izin\n 3. Terlambat \n4. Absen");
+        
+    }
 
 }
+
+    public static void lihatDat () {
+    
+}
+    
