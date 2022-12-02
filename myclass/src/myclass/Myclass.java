@@ -21,4 +21,8 @@ public class Myclass {
         
     }
     
+    public void dariHendro(){
+        System.out.println("PUKI GALON");
+    } 
+   
 }
