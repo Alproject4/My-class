@@ -17,10 +17,6 @@ public class Myclass {
      
     }
     
-    void static mainmenu(){
-        
-    }
-    
     public void dariHendro(){
         System.out.println("PUKI GALON");
     } 
