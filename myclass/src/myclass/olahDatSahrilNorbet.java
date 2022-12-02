@@ -8,6 +8,6 @@ package myclass;
  *
  * @author ASUS
  */
-public class presensiIN {
+public class olahDatSahrilNorbet {
     
 }

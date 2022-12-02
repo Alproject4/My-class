@@ -10,7 +10,7 @@ import java.util.Scanner;
  *
  * @author gibra
  */
-public class mainMenu {
+public class mainMenuUtama {
 
     public static void main(String[] args) {
         mainMenu(1);
@@ -64,6 +64,6 @@ public class mainMenu {
     }
 }
 
-public static void lihatDat () {
-    
-}
+
+   
+

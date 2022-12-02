@@ -6,8 +6,8 @@ package myclass;
 
 /**
  *
- * @author gibra
+ * @author ASUS
  */
-public class presensi {
+public class lihatDatAngger {
     
 }
