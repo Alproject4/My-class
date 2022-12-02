@@ -14,10 +14,11 @@ public class Myclass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hello word");
-        System.out.println("Angger kiyowo");
-        System.out.println("Sahril cute");
-        System.out.println("Norberth piaoliang");
+     
+    }
+    
+    void static mainmenu(){
+        
     }
     
 }
