@@ -19,7 +19,7 @@ import static myclass.mainMenuUtama.control;
  * @author ASUS
  */
 public class mainMenuDodo {
-
+    static int tambahKel=0;
     public static void main(String[] args) {
         mainMenu();
     }
@@ -32,7 +32,6 @@ public class mainMenuDodo {
 
         if (pilih == 1) {
             makeClass();
-
         } else if (pilih == 2) {
             lihDat();
 
@@ -41,30 +40,28 @@ public class mainMenuDodo {
 
     public static void makeClass() {
         Scanner sc = new Scanner(System.in);
-        int i = 0;
         String pilih;
         do {
             System.out.println("KELAS BARU");
             System.out.print("NAMA KELAS : ");
-            kelas[i][0] = sc.next();
+            kelas[tambahKel][0] = sc.next();
             System.out.print("TOTAL MHS : ");
-            kelas[i][1] = sc.next();
-            System.out.println("total : " + kelas[i][1]);
+            kelas[tambahKel][1] = sc.next();
+            System.out.println("total : " + kelas[tambahKel][1]);
             System.out.println("Apakah Data Sudah Benar?");
             System.out.println(" Lanjut ke presensi mhs (y/t)");
             pilih = sc.next();
-            i++;
+            tambahKel++;
         } while (pilih.toLowerCase().equals('t'));
         presensiMhs();
 
     }
      public static void lihDat() {
         System.out.println("Lihat Kelas");
-        int tot = 2;
+      
         System.out.println("Nama kelas : ");
-        for (int i = 0; i < tot; i++) {
+        for (int i = 0; i < kelas.length; i++) {
             System.out.printf("%d. %s\n", i + 1, kelas[i][0]);
-
         }
         //milih kelas array
         System.out.println("Pilih kelas : ");
@@ -86,7 +83,7 @@ public class mainMenuDodo {
 
         String[] fak = {"51", "52", "53", "31"};
         for (int i = 0; i < tot; i++) {
-            System.out.println("Presensi ke-" + i);
+            System.out.println("Presensi ke-" + i+1);
             System.out.println("Masukan Nama : ");
             mhs[i][0] = sc.next();
             System.out.println("Masukan NIM : ");
@@ -118,6 +115,7 @@ public class mainMenuDodo {
             System.out.println("NIM : " + mhs[j][1]);
             System.out.println("Fakultas : " + mhs[j][2]);
         }
+        
         resolf();
 
     }
