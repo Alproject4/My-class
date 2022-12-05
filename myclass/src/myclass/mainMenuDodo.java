@@ -5,21 +5,18 @@
 package myclass;
 
 import java.util.Scanner;
-import static myclass.lihatDatAngger.absent;
-import static myclass.lihatDatAngger.hadir;
-import static myclass.lihatDatAngger.izin;
-import static myclass.lihatDatAngger.kelas;
-import static myclass.lihatDatAngger.lookupArray;
-import static myclass.lihatDatAngger.mhs;
-import static myclass.lihatDatAngger.presensiMhs;
-import static myclass.mainMenuUtama.control;
 
 /**
  *
  * @author ASUS
  */
 public class mainMenuDodo {
-    static int tambahKel=0;
+
+    public static String[][] kelas = new String[10][5];
+    static String[][] mhs = new String[3][5];
+    static int hadir = 0, izin = 0, absent = 0;
+    static int tambahKel = 0;
+
     public static void main(String[] args) {
         mainMenu();
     }
@@ -33,8 +30,7 @@ public class mainMenuDodo {
         if (pilih == 1) {
             makeClass();
         } else if (pilih == 2) {
-            lihDat();
-
+            int i = 1;
         }
     }
 
@@ -42,9 +38,15 @@ public class mainMenuDodo {
         Scanner sc = new Scanner(System.in);
         String pilih;
         do {
+            int i = 1;
+            i++;
+            kelas = new String[i][];
+            System.out.println("ini kelas length :" + kelas.length);
             System.out.println("KELAS BARU");
             System.out.print("NAMA KELAS : ");
             kelas[tambahKel][0] = sc.next();
+            tambahKel++;
+            lihDat(kelas = new String[tambahKel][]);
             System.out.print("TOTAL MHS : ");
             kelas[tambahKel][1] = sc.next();
             System.out.println("total : " + kelas[tambahKel][1]);
@@ -56,19 +58,18 @@ public class mainMenuDodo {
         presensiMhs();
 
     }
-     public static void lihDat() {
+
+    static void lihDat(String[][] totalKelas) {
         System.out.println("Lihat Kelas");
-      
+
         System.out.println("Nama kelas : ");
-        for (int i = 0; i < kelas.length; i++) {
+        for (int i = 0; i < totalKelas.length; i++) {
             System.out.printf("%d. %s\n", i + 1, kelas[i][0]);
         }
         //milih kelas array
         System.out.println("Pilih kelas : ");
         Scanner sc = new Scanner(System.in);
-        int pilih = sc.nextInt();
-        pilih -= 1;
-        lookupArray(pilih);
+        lookupArray(sc.nextInt());
     }
 
     public static void presensiMhs() {
@@ -83,7 +84,7 @@ public class mainMenuDodo {
 
         String[] fak = {"51", "52", "53", "31"};
         for (int i = 0; i < tot; i++) {
-            System.out.println("Presensi ke-" + i+1);
+            System.out.println("Presensi ke-" + (i + 1));
             System.out.println("Masukan Nama : ");
             mhs[i][0] = sc.next();
             System.out.println("Masukan NIM : ");
@@ -115,7 +116,7 @@ public class mainMenuDodo {
             System.out.println("NIM : " + mhs[j][1]);
             System.out.println("Fakultas : " + mhs[j][2]);
         }
-        
+
         resolf();
 
     }
@@ -128,8 +129,6 @@ public class mainMenuDodo {
         System.out.println();
         mainMenu();
     }
-
-   
 
     public static void lookupArray(int pilih) {
         System.out.println("Mata kuliah : " + kelas[pilih][0]);
