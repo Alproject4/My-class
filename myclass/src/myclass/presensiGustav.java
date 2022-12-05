@@ -51,6 +51,11 @@ public class presensiGustav {
             } else {
                 System.out.println("Anda Bukan Mahasiswa FST");
             }
+            System.out.println("Hadir");
+            System.out.println("Izin");
+            System.out.println("Alpha");
+            mhs[i][3] = sc.next();
+            mhs[i][4] += i;
             System.out.println("=================================");
         }
 
