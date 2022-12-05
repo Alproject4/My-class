@@ -27,6 +27,14 @@ public class presensiGustav {
             String nimmhs = mhs[i][1].substring(2, 4);
             System.out.println("" + mhs[i][1].length());
             System.out.println(fak[2]);
+            if (mhs[i][1].length() >= 10) {
+                System.out.println("\"jumlah input melebihi batas\"");
+                System.out.println("");
+            }
+            for (int j = 0; j >= 10; j++) {
+                System.out.println("Masukan Nama : ");
+                System.out.println("Masukan NIM :");
+            }
 
             if (nimmhs.equals(fak[0]) && mhs[i][1].length() == 9) {
                 System.out.println("Elektro");
@@ -54,6 +62,5 @@ public class presensiGustav {
             System.out.println("Fakultas : " + mhs[j][2]);
         }
     }
-
 
 }
