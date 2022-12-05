@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class mainMenuDodo {
 
-    public static String[][] kelas = new String[10][5];
+    public static String[][] kelas;
     static String[][] mhs = new String[3][5];
     static int hadir = 0, izin = 0, absent = 0;
     static int tambahKel = 0;
@@ -30,7 +30,7 @@ public class mainMenuDodo {
         if (pilih == 1) {
             makeClass();
         } else if (pilih == 2) {
-            int i = 1;
+          //herererererere
         }
     }
 
@@ -38,15 +38,13 @@ public class mainMenuDodo {
         Scanner sc = new Scanner(System.in);
         String pilih;
         do {
-            int i = 1;
+            int i = 1; 
+            kelas = new String[i][5];
             i++;
-            kelas = new String[i][];
             System.out.println("ini kelas length :" + kelas.length);
             System.out.println("KELAS BARU");
             System.out.print("NAMA KELAS : ");
             kelas[tambahKel][0] = sc.next();
-            tambahKel++;
-            lihDat(kelas = new String[tambahKel][]);
             System.out.print("TOTAL MHS : ");
             kelas[tambahKel][1] = sc.next();
             System.out.println("total : " + kelas[tambahKel][1]);
