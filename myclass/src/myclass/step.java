@@ -4,12 +4,31 @@
  */
 package myclass;
 
+import java.util.Scanner;
+
 /**
  *
  * @author stepa
  */
 public class step {
+
     public static void main(String[] args) {
-        System.out.println("HElo");
+        Scanner in = new Scanner(System.in);
+
+        //Program Biodata Siswa
+        System.out.println("Jumlah Siswa: ");
+        int jum = in.nextInt();
+        String[] siswa = new String[jum];
+
+        //mengisi data ke array
+        for (int i = 0; i < siswa.length; i++) {
+            System.out.print("Nama siswa ke-" + (i +1)+ ": ");
+            siswa[i] = in.next();
+        }
+
+        //mencetak nama siswa
+        for (String b : siswa) {
+            System.out.println(b);
+        }
     }
 }
