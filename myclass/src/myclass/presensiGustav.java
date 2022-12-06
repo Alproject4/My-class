@@ -19,7 +19,8 @@ public class presensiGustav {
 
         String[] fak = {"51", "52", "53", "31"};
         for (int i = 0; i <= 2; i++) {
-            System.out.println("Presensi ke-" + i);
+            do {
+                 System.out.println("Presensi ke-" + i);
             System.out.println("Masukan Nama : ");
             mhs[i][0] = sc.next();
             System.out.println("Masukan NIM : ");
@@ -57,6 +58,10 @@ public class presensiGustav {
             mhs[i][3] = sc.next();
             mhs[i][4] += i;
             System.out.println("=================================");
+            }while(){
+            
+        }
+           
         }
 
         for (int j = 0; j <= 2; j++) {
