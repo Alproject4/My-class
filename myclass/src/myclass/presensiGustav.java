@@ -18,52 +18,60 @@ public class presensiGustav {
         Scanner sc = new Scanner(System.in);
 
         String[] fak = {"51", "52", "53", "31"};
+        String[] univ = { "4" };
         for (int i = 0; i <= 2; i++) {
             do {
-                 System.out.println("Presensi ke-" + i);
+                    
+                System.out.println("Presensi ke-" + i);
+                System.out.println("Masukan Nama : ");
+                mhs[i][0] = sc.next();
+                System.out.println("Masukan NIM : ");
+                mhs[i][1] = sc.next();
+                String nimmhs = mhs[i][1].substring(2, 4);
+                String angkatan = mhs[i][1].substring(0, 2);
+                System.out.println("angkatan : 20" + angkatan);
+                System.out.println("" + mhs[i][1].length());
+                System.out.println(fak[2]);
+                if (mhs[i][1].length() >= 10) {
+                    System.out.println("\"jumlah input melebihi batas\"");
+                    System.out.println("");
+                }
+
+                if (nimmhs.equals(fak[0]) && mhs[i][1].length() == 9) {
+                    System.out.println("Elektro");
+                    mhs[i][2] = "Elektro";
+                } else if (nimmhs.equals(fak[1]) && mhs[i][1].length() == 9) {
+                    System.out.println("Mesin");
+                    mhs[i][2] = "Mesin";
+                } else if (nimmhs.equals(fak[2]) && mhs[i][1].length() == 9) {
+                    System.out.println("Informatika");
+                    mhs[i][2] = "Informatika";
+                } else if (nimmhs.equals(fak[3]) && mhs[i][1].length() == 9) {
+                    System.out.println("Matematika");
+                    mhs[i][2] = "Matematika";
+                } else {
+                    System.out.println("Anda Bukan Mahasiswa FST");
+                }
+                System.out.println("===PILIH PRESENSI===");
+                System.out.println("1. Hadir");
+                System.out.println("2. Izin");
+                System.out.println("3. Alpha");
+                System.out.println(" ");
+                mhs[i][3] = sc.next();
+                mhs[i][4] += i;
+                System.out.println("=================================");
+                if (!(mhs[i][1].length() == 9)) {
+                    System.out.println("Inputan Nim Tidak Sesuai");
+                }
+            } while (!(mhs[i][1].length() == 9));
+
+            System.out.println("Presensi ke-" + i);
             System.out.println("Masukan Nama : ");
             mhs[i][0] = sc.next();
             System.out.println("Masukan NIM : ");
             mhs[i][1] = sc.next();
-            String nimmhs = mhs[i][1].substring(2, 4);
-            System.out.println("" + mhs[i][1].length());
-            System.out.println(fak[2]);
-            if (mhs[i][1].length() >= 10) {
-                System.out.println("\"jumlah input melebihi batas\"");
-                System.out.println("");
-            }
-            for (int j = 0; j >= 10; j++) {
-                System.out.println("Masukan Nama : ");
-                System.out.println("Masukan NIM :");
-            }
 
-            if (nimmhs.equals(fak[0]) && mhs[i][1].length() == 9) {
-                System.out.println("Elektro");
-                mhs[i][2] = "Elektro";
-            } else if (nimmhs.equals(fak[1]) && mhs[i][1].length() == 9) {
-                System.out.println("Mesin");
-                mhs[i][2] = "Mesin";
-            } else if (nimmhs.equals(fak[2]) && mhs[i][1].length() == 9) {
-                System.out.println("Informatika");
-                mhs[i][2] = "Informatika";
-            } else if (nimmhs.equals(fak[3]) && mhs[i][1].length() == 9) {
-                System.out.println("Matematika");
-                mhs[i][2] = "Matematika";
-            } else {
-                System.out.println("Anda Bukan Mahasiswa FST");
-            }
-            System.out.println("Hadir");
-            System.out.println("Izin");
-            System.out.println("Alpha");
-            mhs[i][3] = sc.next();
-            mhs[i][4] += i;
-            System.out.println("=================================");
-            }while(){
-            
         }
-           
-        }
-
         for (int j = 0; j <= 2; j++) {
             System.out.println("=================================");
             System.out.println("Data MHS : ");
