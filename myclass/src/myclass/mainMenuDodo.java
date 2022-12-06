@@ -20,6 +20,7 @@ public class mainMenuDodo {
     static int hadir = 0, izin = 0, absent = 0;
     static int tambahKel = 0;
     public static int banyakKelas = 0;
+    public static int conclass = 0;
 
     public static void main(String[] args) {
         mainMenu();
@@ -30,38 +31,60 @@ public class mainMenuDodo {
         System.out.println("1. Buat kelas baru\n2. Lihat kelas");
         System.out.print("Pilih 1 atau 2 :");
         int pilih = sc.nextInt();
-        if (pilih == 1) {
-            makeClass();
-        } else if (pilih == 2) {
-            lihDat();
+        switch (pilih) {
+            case 1:
+
+                makeClass();
+                break;
+
+            case 2:
+                if (conclass < 1) {
+                    System.out.println("Belum ada kelas");
+                    System.out.println("_______________________");
+                    mainMenu();
+                } else {
+                    makeClass();
+
+                }
+
         }
-        while(pilih > 2 || pilih <1)
     }
 
     public static void makeClass() {
-       
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Tambah kel " + tambahKel);
-     
+        conclass++;
+
         String pilih;
-        do {
-            System.out.println("KELAS BARU");
-            System.out.print("NAMA KELAS : ");
-            kelas[tambahKel][0] = sc.next();
-            System.out.print("TOTAL MHS : ");
-            kelas[tambahKel][1] = sc.next();
-            System.out.println("Apakah Data Sudah Benar?");
-            System.out.println(" Lanjut ke presensi mhs (y/t)");
-            pilih = sc.next();
-        } while (pilih.toLowerCase().equals('t'));
-        System.out.println("Nilai TotalMHS Kel = " + kelas[tambahKel][1]);
-        System.out.println("Kelas length : " + kelas.length);
-        int totalMhs = Integer.parseInt(kelas[tambahKel][1]);
-        presensiMhs(totalMhs);
+
+        System.out.println("KELAS BARU");
+        System.out.print("NAMA KELAS : ");
+        kelas[tambahKel][0] = sc.next();
+        System.out.print("TOTAL MHS : ");
+        kelas[tambahKel][1] = sc.next();
+        System.out.println("Apakah Data Sudah Benar?");
+        System.out.println(" Lanjut ke presensi mhs (y/t)");
+        pilih = sc.next();
+        switch (pilih) {
+            case "y":
+
+                System.out.println("Nilai TotalMHS Kel = " + kelas[tambahKel][1]);
+                System.out.println("Kelas length : " + kelas.length);
+                int totalMhs = Integer.parseInt(kelas[tambahKel][1]);
+                presensiMhs(totalMhs);
+                break;
+            default:
+                System.out.println("Pilihan anda tidak sesuai");
+                System.out.println("_________________________________________");
+                makeClass();
+                break;
+        }
+
     }
 
     static void presensiMhs(int totalMhs) {
-        System.out.println("Banyak KElas"+banyakKelas);
+        System.out.println("Banyak KElas" + banyakKelas);
         DateFormat DateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         Date TIME = new Date();
         mhs = new String[totalMhs][5];
@@ -127,13 +150,13 @@ public class mainMenuDodo {
     static void lihDat() {
         System.out.println("Lihat Kelas");
         System.out.println("Nama kelas : ");
-        System.out.println("Kelas LENGTH : "+kelas.length);
-        System.out.println("Kelas pertama : "+kelas[0][0]);
-        System.out.println("Kelas Kedua : "+kelas[1][0]);
-        
-        for (int i = 0; i < banyakKelas ; i++) {
+        System.out.println("Kelas LENGTH : " + kelas.length);
+        System.out.println("Kelas pertama : " + kelas[0][0]);
+        System.out.println("Kelas Kedua : " + kelas[1][0]);
+
+        for (int i = 0; i < banyakKelas; i++) {
             System.out.printf("%d. %s\n", (i + 1), kelas[i][0]);
-            System.out.println("nilai I :"+i);
+            System.out.println("nilai I :" + i);
         }
         //milih kelas array
         System.out.println("Pilih kelas : ");
@@ -151,13 +174,13 @@ public class mainMenuDodo {
     }
 
     public static void lookupArray(int pilih) {
-        
-        System.out.println("Mata kuliah : " + kelas[(pilih-1)][0]);
+
+        System.out.println("Mata kuliah : " + kelas[(pilih - 1)][0]);
         String totalMhs = kelas[10][1];
 
         System.out.println("Total Mahasiswa : " + totalMhs);
         System.out.println("Hadir\t: " + hadir);
-        
+
         System.out.println("Izin\t: " + izin);
         System.out.println("Absent\t: " + absent);
 

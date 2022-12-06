@@ -16,16 +16,17 @@ public class lihatDatAngger {
 
     public static String[][] kelas = new String[10][2];
     static String[][] mhs = new String[3][5];
-    static int hadir = 0, izin = 0, absent=0;
+    static int hadir = 0, izin = 0, absent = 0;
+
     public static void main(String[] args) {
-        
-        lihDat();  
+
+        lihDat();
     }
 
     public static void lihDat() {
         String namakls = null;
         int tot1 = 15, tot2 = 15;
-        char Y,T,back;
+        char Y, T, back;
 //        int []kelas = new int [15];
         //menampilkan kelas dalam array
 //        System.out.println("Nama kelas : ");
@@ -33,28 +34,27 @@ public class lihatDatAngger {
 //            System.out.printf("%d. %s\n", i + 1, kelas[i][1]);
 //
 //        }
-        do{
-        System.out.println("Lihat Data");
-        System.out.println("No.\tNama Kelas");
-        System.out.print("=================");
-        System.out.println("=================");
-        for (int i = 0; i < kelas.length; i++) {
-            System.out.printf("%d. %s\n", i + 1,"\t"+kelas[i][1]);
-        }
-        System.out.print("=================");
-        System.out.println("=================");
-        
-        //milih kelas array
-        
-        System.out.print("Pilih kelas : ");
-        Scanner sc = new Scanner(System.in);
-        lookupArray(sc.nextInt());
-        System.out.println("Apakah anda ingin kembali? (Y/T");
-        back = sc.next().charAt(0);
-        }while (back == 'Y');
-        
-        
+        do {
+            System.out.println("Lihat Data");
+            System.out.println("No.\tNama Kelas");
+            System.out.print("=================");
+            System.out.println("=================");
+            for (int i = 0; i < kelas.length; i++) {
+                System.out.printf("%d. %s\n", i + 1, "\t" + kelas[i][1]);
+            }
+            System.out.print("=================");
+            System.out.println("=================");
+
+            //milih kelas array
+            System.out.print("Pilih kelas : ");
+            Scanner sc = new Scanner(System.in);
+            lookupArray(sc.nextInt());
+            System.out.println("Apakah anda ingin kembali? (Y/T");
+            back = sc.next().charAt(0);
+        } while (back == 'Y');
+
     }
+
     //data dari kelas
     public static void lookupArray(int pilih) {
         System.out.println("================================");
@@ -62,12 +62,12 @@ public class lihatDatAngger {
         String totalMhs = kelas[10][1];
 
         System.out.println("Total Mahasiswa : " + totalMhs);
-        System.out.println("Hadir\t: " +hadir);
-        System.out.println("Izin\t: " +izin);
-        System.out.println("Absent\t: " +absent);
+        System.out.println("Hadir\t: " + hadir);
+        System.out.println("Izin\t: " + izin);
+        System.out.println("Absent\t: " + absent);
 
     }
-    
+
     public static void newClass() {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i <= 2; i++) {
@@ -83,16 +83,13 @@ public class lihatDatAngger {
             } else if (inp.equals("3")) {
                 mhs[i][3] += "ABSENT";
             }
-            
+
             if (mhs[i][3].equals("HADIR")) {
                 hadir += 1;
-            }
-            else if (mhs[i][
-                    3].equals("IZIN")) {
+            } else if (mhs[i][3].equals("IZIN")) {
                 izin += 1;
-            }
-            else if (mhs[i][3].equals("ABSENT")) {
-                absent +=1;
+            } else if (mhs[i][3].equals("ABSENT")) {
+                absent += 1;
             }
         }
     }
@@ -116,8 +113,6 @@ public class lihatDatAngger {
         presensiMhs();
 
     }
-    
-    
 
     public static void presensiMhs() {
         System.out.println("=================================");
