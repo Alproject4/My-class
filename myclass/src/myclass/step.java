@@ -30,5 +30,14 @@ public class step {
         for (String b : siswa) {
             System.out.println(b);
         }
+        
+        int[][] a;
+        
+        for(int i =0; i<25; i++){
+            for(int j = 0 ; j<i ;j++){
+               
+                System.out.println(" "+a[i][j]);
+            }
+        }
     }
 }
