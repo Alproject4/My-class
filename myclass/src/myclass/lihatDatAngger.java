@@ -18,6 +18,7 @@ public class lihatDatAngger {
     static String[][] mhs = new String[3][5];
     static int hadir = 0, izin = 0, absent=0;
     public static void main(String[] args) {
+        //newClass();
         
         lihDat();  
     }
@@ -36,13 +37,12 @@ public class lihatDatAngger {
         do{
         System.out.println("Lihat Data");
         System.out.println("No.\tNama Kelas");
-        System.out.print("=================");
-        System.out.println("=================");
+        System.out.println("==========================");
         for (int i = 0; i < kelas.length; i++) {
             System.out.printf("%d. %s\n", i + 1,"\t"+kelas[i][1]);
         }
-        System.out.print("=================");
-        System.out.println("=================");
+        System.out.println("==========================");
+        
         
         //milih kelas array
         
@@ -68,7 +68,7 @@ public class lihatDatAngger {
 
     }
     
-    public static void newClass() {
+    public static void newClass(String present) {
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i <= 2; i++) {
             System.out.println("Selamat Datang Mahasiswa FST");
@@ -87,8 +87,7 @@ public class lihatDatAngger {
             if (mhs[i][3].equals("HADIR")) {
                 hadir += 1;
             }
-            else if (mhs[i][
-                    3].equals("IZIN")) {
+            else if (mhs[i][3].equals("IZIN")) {
                 izin += 1;
             }
             else if (mhs[i][3].equals("ABSENT")) {
