@@ -16,17 +16,23 @@ public class lihatDatAngger {
 
     public static String[][] kelas = new String[10][2];
     static String[][] mhs = new String[3][5];
-    static int hadir = 0, izin = 0, absent=0;
+    static int hadir = 0, izin = 0, absent = 0;
+
     public static void main(String[] args) {
+<<<<<<< HEAD
         //newClass();
         
         lihDat();  
+=======
+
+        lihDat();
+>>>>>>> dd8ad6e91d6eb6df3e3683dc385ef558244d20c5
     }
 
     public static void lihDat() {
         String namakls = null;
         int tot1 = 15, tot2 = 15;
-        char Y,T,back;
+        char Y, T, back;
 //        int []kelas = new int [15];
         //menampilkan kelas dalam array
 //        System.out.println("Nama kelas : ");
@@ -34,6 +40,7 @@ public class lihatDatAngger {
 //            System.out.printf("%d. %s\n", i + 1, kelas[i][1]);
 //
 //        }
+<<<<<<< HEAD
         do{
         System.out.println("Lihat Data");
         System.out.println("No.\tNama Kelas");
@@ -54,7 +61,29 @@ public class lihatDatAngger {
         }while (back == 'Y');
         
         
+=======
+        do {
+            System.out.println("Lihat Data");
+            System.out.println("No.\tNama Kelas");
+            System.out.print("=================");
+            System.out.println("=================");
+            for (int i = 0; i < kelas.length; i++) {
+                System.out.printf("%d. %s\n", i + 1, "\t" + kelas[i][1]);
+            }
+            System.out.print("=================");
+            System.out.println("=================");
+
+            //milih kelas array
+            System.out.print("Pilih kelas : ");
+            Scanner sc = new Scanner(System.in);
+            lookupArray(sc.nextInt());
+            System.out.println("Apakah anda ingin kembali? (Y/T");
+            back = sc.next().charAt(0);
+        } while (back == 'Y');
+
+>>>>>>> dd8ad6e91d6eb6df3e3683dc385ef558244d20c5
     }
+
     //data dari kelas
     public static void lookupArray(int pilih) {
         System.out.println("================================");
@@ -62,13 +91,18 @@ public class lihatDatAngger {
         String totalMhs = kelas[10][1];
 
         System.out.println("Total Mahasiswa : " + totalMhs);
-        System.out.println("Hadir\t: " +hadir);
-        System.out.println("Izin\t: " +izin);
-        System.out.println("Absent\t: " +absent);
+        System.out.println("Hadir\t: " + hadir);
+        System.out.println("Izin\t: " + izin);
+        System.out.println("Absent\t: " + absent);
 
     }
+<<<<<<< HEAD
     
     public static void newClass(String present) {
+=======
+
+    public static void newClass() {
+>>>>>>> dd8ad6e91d6eb6df3e3683dc385ef558244d20c5
         Scanner sc = new Scanner(System.in);
         for (int i = 0; i <= 2; i++) {
             System.out.println("Selamat Datang Mahasiswa FST");
@@ -83,15 +117,18 @@ public class lihatDatAngger {
             } else if (inp.equals("3")) {
                 mhs[i][3] += "ABSENT";
             }
-            
+
             if (mhs[i][3].equals("HADIR")) {
                 hadir += 1;
+<<<<<<< HEAD
             }
             else if (mhs[i][3].equals("IZIN")) {
+=======
+            } else if (mhs[i][3].equals("IZIN")) {
+>>>>>>> dd8ad6e91d6eb6df3e3683dc385ef558244d20c5
                 izin += 1;
-            }
-            else if (mhs[i][3].equals("ABSENT")) {
-                absent +=1;
+            } else if (mhs[i][3].equals("ABSENT")) {
+                absent += 1;
             }
         }
     }
@@ -115,8 +152,6 @@ public class lihatDatAngger {
         presensiMhs();
 
     }
-    
-    
 
     public static void presensiMhs() {
         System.out.println("=================================");
