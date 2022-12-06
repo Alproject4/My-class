@@ -1,8 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package myclass;
+package MainPackage;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,19 +12,23 @@ import java.util.Scanner;
 
 /**
  *
- * @author ASUS
+ * @author Sahril
  */
-public class mainMenuDodo {
-
-    public static String[][] kelas = new String[10][10];
+public class main {
+ public static String[][] kelas = new String[10][10];
     static String[][] mhs = new String[90][10];
     static int hadir = 0, izin = 0, absent = 0;
     static int tambahKel = 0;
     public static int banyakKelas = 0;
-
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
+        // TODO code application logic here
         mainMenu();
     }
+   
+
 
     public static void mainMenu() {
         Scanner sc = new Scanner(System.in);
@@ -35,7 +40,7 @@ public class mainMenuDodo {
         } else if (pilih == 2) {
             lihDat();
         }
-        while(pilih > 2 || pilih <1)
+        while(pilih > 2 || pilih <1);
     }
 
     public static void makeClass() {
@@ -162,4 +167,6 @@ public class mainMenuDodo {
         System.out.println("Absent\t: " + absent);
 
     }
+    
+    
 }
