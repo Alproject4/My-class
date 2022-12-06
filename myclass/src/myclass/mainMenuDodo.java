@@ -42,12 +42,14 @@ public class mainMenuDodo {
                     System.out.println("Belum ada kelas");
                     System.out.println("_______________________");
                     mainMenu();
-                } else {
-                    makeClass();
 
                 }
-
+            default:
+                System.out.println("Pilihan anda tidak sesuai");
+                System.out.println("___________________________");
+                mainMenu();
         }
+
     }
 
     public static void makeClass() {

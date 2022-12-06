@@ -45,13 +45,14 @@ public class olahDatSahrilNorbet {
             }
             int data = Integer.parseInt(prod1[1]);
             String nameof = prod1[1];
-            int max = 0;
-            if (data > max) {
-                System.out.println("PRODI : " + nameof);
+            int max=0;
+            if(data > max){
+                System.out.println("PRODI : "+nameof);
             }
-
+            
         }
         int data = Integer.parseInt(prod[0][1]);
     }
-
+    
+   
 }

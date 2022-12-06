@@ -22,7 +22,7 @@ public class step {
 
         //mengisi data ke array
         for (int i = 0; i < siswa.length; i++) {
-            System.out.print("Nama siswa ke-" + (i + 1) + ": ");
+            System.out.print("Nama siswa ke-" + (i +1)+ ": ");
             siswa[i] = in.next();
         }
 
@@ -30,13 +30,13 @@ public class step {
         for (String b : siswa) {
             System.out.println(b);
         }
-
+        
         int[][] a;
-
-        for (int i = 0; i < 25; i++) {
-            for (int j = 0; j < i; j++) {
-
-                System.out.println(" " + a[i][j]);
+        
+        for(int i =0; i<25; i++){
+            for(int j = 0 ; j<i ;j++){
+               
+                System.out.println(" "+a[i][j]);
             }
         }
     }

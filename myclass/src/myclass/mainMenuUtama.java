@@ -40,25 +40,30 @@ public class mainMenuUtama {
         System.out.println("1. Hadir \n2. Izin\n 3. Terlambat \n4. Absen");
 
     }
-
-    public static void presensi() {
-
+    
+        
+    public static void presensi(){
+        
         System.out.println("Masukan Nama : ");
         System.out.println("Masukan NIM : ");
-        String inp = "225314048";
+        String inp = "225314048"; 
         String[] fak = {"52", "53", "51", "54"};
         String nim = "225314048";
-        String p = nim.substring(2, 4);
-        if (p.equals(fak[0])) {
+        String p = nim.substring(2,4);
+        if(p.equals(fak[0])){
             System.out.println("Matematika");
-        } else if (p.equals(fak[1])) {
+        }else if(p.equals(fak[1])){
             System.out.println("INFORMATIKA");
-        } else if (p.equals(fak[2])) {
+        }else if(p.equals(fak[2])){
             System.out.println("MESIN");
-        } else if (p.equals(fak[3])) {
+        }else if(p.equals(fak[3])){
             System.out.println("ELEKTRO");
-        } else {
-
-        }
+        }else{
+            
+        }   
     }
 }
+
+
+   
+

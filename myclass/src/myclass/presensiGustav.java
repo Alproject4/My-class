@@ -18,10 +18,10 @@ public class presensiGustav {
         Scanner sc = new Scanner(System.in);
 
         String[] fak = {"51", "52", "53", "31"};
-        String[] univ = {"4"};
+        String[] univ = { "4" };
         for (int i = 0; i <= 2; i++) {
             do {
-
+                    
                 System.out.println("Presensi ke-" + i);
                 System.out.println("Masukan Nama : ");
                 mhs[i][0] = sc.next();
