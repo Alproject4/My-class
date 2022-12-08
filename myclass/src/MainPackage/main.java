@@ -24,7 +24,7 @@ public class main {
     public static String[][] kelas = new String[10][10];
     static String[][] mhs = new String[90][10];
 
-   public static int countMHS = 0; 
+    public static int countMHS = 0;
     static int tambahKel = 0;
     public static int banyakKelas = 0;
     public static int conclass = 0;
@@ -33,9 +33,10 @@ public class main {
     public static void main(String[] args) {
         mainMenu();
     }
-      public static void mainMenu() {
+
+    public static void mainMenu() {
         Scanner sc = new Scanner(System.in);
-          System.out.println("===============MyClass===============");
+        System.out.println("===============MyClass===============");
         System.out.println("1. Buat kelas baru\n2. Lihat kelas\n3. Exit");
         System.out.print("Masukkan Pilihan : ");
         int pilih = sc.nextInt();
@@ -50,7 +51,7 @@ public class main {
                     System.out.println("Belum ada kelas");
                     System.out.println("_______________________");
                     mainMenu();
-                }else{
+                } else {
                     lihDat();
                 }
             case 3:
@@ -89,8 +90,8 @@ public class main {
         String[] univ = {"14"};
         //membuat data untuk menampung banyak inputan mhs
         //melakukan presensi 
-       int hadir = 0, ijin = 0, alpha=0;
-        for (int i = 0 ; i < totalMhs; i++) {
+        int hadir = 0, ijin = 0, alpha = 0;
+        for (int i = 0; i < totalMhs; i++) {
             mhs[countMHS][5] = namaKelas;
             System.out.println("Presensi ke-" + (i + 1));
             mhs[countMHS][0] = String.valueOf(i + 1);
@@ -113,6 +114,7 @@ public class main {
             } else if (nimmhs.equals(fakultas[3]) && mhs[countMHS][2].length() == 9) {
                 mhs[countMHS][3] = "Matematika";
             } else {
+                mhs[countMHS][3] = "Tidak Terdaftar";
                 System.out.println("Anda Bukan Mahasiswa FST");
             }
             System.out.println("====PILIH PRESENSI====");
@@ -199,7 +201,7 @@ public class main {
         System.out.println("=======================");
         switch (pilihan) {
             case 1:
-                tamplihMhs(pilih-1);
+                tamplihMhs(pilih - 1);
             case 2:
                 mainMenu();
             case 3:
@@ -208,7 +210,7 @@ public class main {
                 System.out.println("Pilihan anda tidak sesuai");
                 System.out.println("___________________________");
                 mainMenu();
-                
+
         }
     }
 
@@ -250,7 +252,7 @@ public class main {
         System.out.println("ID.\tNAMA\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\tMata Kuliah\t\tPresensi");
         System.out.print("======================================================================================================");
         System.out.println("====================================================================================================");
-        
+
         //listing index mhs 
         for (int j = 0; j < mhs.length; j++) {
             if (namaKelas.equals(mhs[j][5])) {
@@ -262,8 +264,6 @@ public class main {
         System.out.println("=====================================================================================================");
     }
 
-    
-    
     public static void dataCompare() {
         System.out.println("E");
     }
