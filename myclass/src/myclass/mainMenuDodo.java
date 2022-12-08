@@ -121,7 +121,6 @@ public class mainMenuDodo {
                 }
                 String angkatan = mhs[countMHS][2].substring(0, 2);
                 mhs[countMHS][7] = angkatan;
-                System.out.println("angkatan : " + mhs[countMHS][7]);
                 String nimmhs = mhs[countMHS][2].substring(2, 4);
                 if (nimmhs.equals(fakultas[0]) && mhs[countMHS][2].length() == 9) {
                     mhs[countMHS][3] = "Elektro";
@@ -182,18 +181,6 @@ public class mainMenuDodo {
             banyakKelas++;
         } while (tambahPresensi.equals("y"));
         resolf();
-//        for (int j = 0; j < totalMhs; j++) {
-//            System.out.println("=================================");
-//            System.out.println("Data MHS : ");
-//            System.out.println("ID : " + mhs[j][0]);
-//            System.out.println("Nama : " + mhs[j][1]);
-//            System.out.println("NIM : " + mhs[j][2]);
-//            System.out.println("Fakultas : " + mhs[j][3]);
-//            System.out.println("Time Record :" + mhs[j][4]);
-//            System.out.println("Nama Kelas : " + mhs[j][5]);
-//            System.out.println("Presensi : " + mhs[j][6]);
-//                                              mhs[j][7]
-//        }
 
     }
 
@@ -219,11 +206,6 @@ public class mainMenuDodo {
         Scanner sc = new Scanner(System.in);
         System.out.println("-------------------------");
         System.out.println("Mata kuliah : " + kelas[(pilih - 1)][0]);
-        String matkul = kelas[(pilih - 1)][0];
-        System.out.println("Matkul : " + matkul);
-        System.out.println("Mhs[5] : " + mhs[(pilih - 1)][5]);
-        String totalMhs = kelas[(pilih - 1)][1];
-        System.out.println("Total Mahasiswa : " + totalMhs);
         //update dr lihdatAngger move to mainMenuDodo
         System.out.println("-------------------------");
         System.out.println("Menu\t:\n1. Lihat Data Mahasiswa\n2. Kembali Menu utama\n3. Exit");
@@ -245,14 +227,12 @@ public class mainMenuDodo {
     }
     public static void tamplihMhs(int pilih) {
         String namaKelas = kelas[pilih][0];
-        String Hd = mhs[pilih][6];
         int hdCount = 0, ijCount = 0, AbCount = 0;
         int countTI = 0, countEL = 0, countTM = 0, countMTK = 0, countOther = 0;
         System.out.printf("KELAS : %s\n", namaKelas);
         System.out.println("ID.\tNAMA\t\t\t\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\t\tMata Kuliah\t\tPresensi\t\tAngkatan");
         System.out.print("==========================================================================================================");
         System.out.println("========================================================================================================");
-
         //listing index mhs 
         for (int j = 0; j < mhs.length; j++) {
             if (namaKelas.equals(mhs[j][5])) {
@@ -277,18 +257,58 @@ public class mainMenuDodo {
                 } else {
                     countOther += 1;
                 }
-                //norbet
-//            System.out.printf("%s\t%s\t\t%s\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4]);
             }
         }
         System.out.print("==========================================================================================================\n");
         System.out.printf("Total Hadir : %d \t\tTotal Ijin : %d\t\tTotal Absent :%d\n", hdCount, ijCount, AbCount);
          System.out.print("==========================================================================================================\n");
-        System.out.printf("\t\tElektro : %d \t\tTeknik Mesin : %d\t\tTeknik Informatika :%d\t\tPendidikan Matematika :%d\t\tLainya : %d\n", countEL, countTM, countTI, countMTK, countOther);
+        System.out.printf("Elektro : %d \t\tTeknik Mesin : %d\t\tTeknik Informatika :%d\t\tPendidikan Matematika :%d\t\tLainya : %d\n", countEL, countTM, countTI, countMTK, countOther);
         System.out.println("========================================================================================================\n");
-
+      
+        int totalS = hdCount +ijCount +AbCount; 
+        
+        if(tambahKel > 2){
+           dataCompare(pilih, totalS,hdCount );
+        }else{
+            System.out.println("Belum Ada Kelas Lain Untuk Dibandingkan");
+            mainMenu();
+        }
     }
-
+    public static void dataCompare(int pil, int totalH, int Hd){
+        String compareKls = " " ;
+        if(pil == 1){
+            compareKls = kelas[(pil+1)][0];
+        }else if(pil > 1){
+            compareKls = kelas[(pil-1)][0];
+        }
+        String myKls = kelas[pil][0];
+        int hdCount = 0;
+        int totalCom =0;
+        System.out.println("Nama Kelas Anda : "+myKls);
+        System.out.println("Nama Kelas Yang Dibandingkan : "+compareKls);
+        for(int i = 0; i<mhs.length; i++){
+              if (compareKls.equals(mhs[i][5])) {
+                  totalCom++;
+                   if (mhs[i][6].equalsIgnoreCase("Hadir")) {
+                    hdCount++;
+                } 
+              }
+        }
+        int compareTotal = totalH - totalCom;
+        if(totalH > totalCom){
+            System.out.println("Total Mahasiswa Dikelas Anda Lebih Banyak Sebanyak : "+compareTotal);
+        }else{
+             System.out.println("Total Mahasiswa Dikelas Anda Lebih Sedikit Sebanyak : "+compareTotal);
+        }
+        int totalHadir = hdCount - Hd;
+        if(Hd > hdCount){
+             System.out.println("Kehadiran Mahasiswa Dikelas Anda Lebih Banyak Sebanyak : "+totalHadir);
+        }else{
+             System.out.println("Kehadiran Mahasiswa Dikelas Anda Lebih Sedikit Sebanyak : "+totalHadir);
+        }
+        mainMenu();
+    }
+    
     public static void crateclass() {
         Scanner sc = new Scanner(System.in);
         conclass++;
@@ -298,6 +318,5 @@ public class mainMenuDodo {
         kelas[tambahKel][0] = sc.nextLine();
         tambahKel++;
         mainMenu();
-
     }
 }

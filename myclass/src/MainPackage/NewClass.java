@@ -25,7 +25,7 @@ public class NewClass {
 //       }
 
         String[][] kelas = {{"A", "2"}, {"B", "5"}};
-        String[][] mhs = {{"A", "Saril", "ijin"}, {"A", "dimas", "hadir"},
+        String[][] mhs = {{"A", "Saril", "hadir"}, {"A", "dimas", "hadir"},
         {"B", "Anger", "hadir"}, {"B", "DImas", "hadir"}, {"B", "DODO", "ijin"}};
 
         System.out.println("COMPARE KELAS");
@@ -35,17 +35,6 @@ public class NewClass {
         int hadirCompare = 0;
         int max = 0;
         int pilihMax = 0;
-
-//        for(int j = 0 ; j< mhs.length; j++){
-//            if(j > 0){
-//                for(int i = 0; i<j; i++){
-//                    if(mhs[i][2].equals(mhs[j][2]) && !(mhs[i][1].equals(mhs[j][1]))){
-//                        System.out.println("Nomor : "+mhs[i][2] + " dan "+ mhs[j][2]+" sama");
-//                    }else{
-////                        System.out.println("Salah");
-//                    }
-//                }
-//            }
         for (int i = 0; i < mhs.length; i++) {
             if (pilih.equals(mhs[i][0]) && mhs[i][2].equals("ijin")) {
                 hadirPilih++;

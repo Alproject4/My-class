@@ -21,86 +21,92 @@ import java.util.Scanner;
 public class step {
 
     public static void main(String[] args) {
-      presensiMhs();
+        dataCompare();
     }
-       static void presensiMhs(int totalMhs) {
-        DateFormat DateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-        Date TIME = new Date();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("=================================");
-        System.out.println("SELAMAT DATANG SILAHKAN PRESENSI DISINI");
-        //inisialisasi baru panjang data mhs
-        String namaKelas = kelas[(conclass - 1)][0];
 
-        //code fakultas
-        String[] fakultas = {"51", "52", "53", "31"};
-        String[] univ = {"14"};
-        //membuat data untuk menampung banyak inputan mhs
-        //melakukan presensi 
-        int hadir = 0;
-        int izin = 0;
-        int absent = 0;
-        for (int i = 0; i < totalMhs; i++) {
-            mhs[i][5] = namaKelas;
-            System.out.println("Presensi ke-" + (i + 1));
-            mhs[i][0] = String.valueOf(i + 1);
-            System.out.print("Masukan Nama : ");
-            mhs[i][1] = sc.next();
-            System.out.print("Masukan NIM : ");
-            mhs[i][2] = sc.next();
-            String valid = mhs[i][2].substring(4, 6);
-            //Valid NIM
-            if (!(valid.equals(univ[0]))) {
-                System.out.println("Bukan MHS Sadhar");
-            }
-            String nimmhs = mhs[i][2].substring(2, 4);
-            if (nimmhs.equals(fakultas[0]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Elektro";
-            } else if (nimmhs.equals(fakultas[1]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Mesin";
-            } else if (nimmhs.equals(fakultas[2]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Informatika";
-            } else if (nimmhs.equals(fakultas[3]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Matematika";
-            } else {
-                System.out.println("Anda Bukan Mahasiswa FST");
-            }
-            System.out.println("====PILIH PRESENSI====");
-            System.out.println("1. Hadir");
-            System.out.println("2. Izin");
-            System.out.println("3. Alpha");
-            System.out.print("Masukan Anda : ");
-            int pilpres = sc.nextInt();
-            if (pilpres == 1) {
-                mhs[i][6] = "Hadir";
-                hadir += 1;
-            } else if (pilpres == 2) {
-                mhs[i][6] = "Izin";
-                izin += 1;
-            } else if (pilpres == 3) {
-                mhs[i][6] = "Alpha";
-                absent += 1;
-            }
-            mhs[i][4] = DateFormat.format(TIME);
-            System.out.println("Record : " + mhs[i][4]);
+    public static void dataCompare() {
+        String[][] kelas = {{"A", "10"}, {"B", "20"}};
+        //        for (int j = 0; j < totalMhs; j++) {
+//            System.out.println("=================================");
+//            System.out.println("Data MHS : ");
+//            System.out.println("ID : " + mhs[j][0]);
+//            System.out.println("Nama : " + mhs[j][1]);
+//            System.out.println("NIM : " + mhs[j][2]);
+//            System.out.println("Fakultas : " + mhs[j][3]);
+//            System.out.println("Time Record :" + mhs[j][4]);
+//            System.out.println("Nama Kelas : " + mhs[j][5]);
+//            System.out.println("Presensi : " + mhs[j][6]);
+//                              Agkatan                mhs[j][7]
+//        }
+        String[][] mhs
+                = {{"1", "Anger", "225314056", "Informatika", "22/10", "A", "Hadir", "22"},
+                {"2", "Sahril", "225314054", "Matematika", "22/10", "A", "Hadir", "22"},
+                {"3", "Hendor", "225214056", "Elektro", "22/10", "A", "Ijin", "22"},
+                {"4", "Stepanus", "225314055", "Informatika", "22/10", "A", "Alpa", "22"},
+                {"1", "Anger", "225314056", "Informatika", "22/10", "B", "Hadir", "22"},
+                {"2", "Sahril", "225314054", "Matematika", "22/10", "B", "Hadir", "22"},
+                {"3", "Hendor", "225214056", "Elektro", "22/10", "B", "Hadir", "22"},
+                {"4", "Stepanus", "225314055", "Informatika", "22/10", "B", "Alpa", "22"}};
 
-            System.out.println("=================================");
+        int tambahKel = 2;
+        Scanner inp = new Scanner(System.in);
+        int pil1 = 0, pil2 = 0;
+        if (tambahKel > 1) {
+            System.out.println("Pilih Kelas Untuk Di Bandingkan");
+            for (int i = 0; i < tambahKel; i++) {
+                System.out.printf("%d. %s\n", (i + 1), kelas[i][0]);
+            }
+            System.out.println("Pilihan Anda : ");
+            System.out.printf("Pilihan Ke 1 : ");
+            pil1 = inp.nextInt();
+            System.out.printf("Pilihan Ke 2 : ");
+            pil2 = inp.nextInt();
+            System.out.println("Nama Kelas 1 : " + kelas[(pil1 - 1)][0]);
+            System.out.println("Nama Kelas 1 : " + kelas[(pil2 - 1)][0]);
+            String namaKel1 = kelas[(pil1 - 1)][0];
+            String namaKel2 = kelas[(pil2 - 1)][0];
+            int tot1 = 0;
+            int tot2 = 0;
+            int totHd = 0;
+            int totHd2 = 0;
+            int mostProd1 = 0;
+            int mostProd2 = 0;
+            for (int i = 0; i < mhs.length; i++) {
+                if (mhs[i][5].equals(namaKel1)) {
+                    tot1++;
+                    if (mhs[i][6].equalsIgnoreCase("Hadir")) {
+                        totHd++;
+                    } else if (mhs[i][3].equalsIgnoreCase("Hadir")) {
+                        totHd++;
+                    }
+                    for (int j = 0; j < 7; j++) {
+                        System.out.print(" ," + mhs[i][j]);
+                        if(mhs[i][6].equalsIgnoreCase("Hadir")){
+                            mostProd1++;
+                        }
+                    }
+                }
+            }
+            System.out.println("");
+            System.out.println("Hadir : "+mostProd1);
+            for (int i = 0; i < mhs.length; i++) {
+                if (mhs[i][5].equals(namaKel2)) {
+                    tot1++;
+                    if (mhs[i][6].equalsIgnoreCase("Hadir")) {
+                        totHd2++;
+                    }
+                }
+            }
+            System.out.println("Total MHS : " + tot1);
+            System.out.println("Total Kelas 1 : " + totHd);
+            System.out.println("Total Hadir Kelas 2 : " + totHd2);
+            int banding = totHd - totHd2;
+            if (totHd > totHd2) {
+                System.out.println("Kehadiran Di Kelans Anda lebih Banyak Sebanyak : " + banding);
+            } else if (totHd < totHd2) {
+                System.out.println("Kehadiran Di Kelans Anda lebih Sedikit Sebanyak : " + banding);
+            }
         }
-        for (int j = 0; j < totalMhs; j++) {
-            System.out.println("=================================");
-            System.out.println("Data MHS : ");
-            System.out.println("ID : " + mhs[j][0]);
-            System.out.println("Nama : " + mhs[j][1]);
-            System.out.println("NIM : " + mhs[j][2]);
-            System.out.println("Fakultas : " + mhs[j][3]);
-            System.out.println("Time Record :" + mhs[j][4]);
-            System.out.println("Nama Kelas : " + mhs[j][5]);
-            System.out.println("Presensi : " + mhs[j][6]);
-        }
-        countMHS++;
-        tambahKel++;
-        banyakKelas++;
-        resolf();
     }
 
 }

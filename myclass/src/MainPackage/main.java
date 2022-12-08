@@ -18,7 +18,6 @@ public class main {
 
     public static String[][] kelas = new String[10][10];
     static String[][] mhs = new String[90][10];
-
     public static int countMHS = 0;
     static int tambahKel = 0;
     public static int banyakKelas = 0;
@@ -31,16 +30,14 @@ public class main {
 
     public static void mainMenu() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("===============MyClass===============");
-        System.out.println("1. Buat kelas baru\n2. Lihat kelas\n3. Exit");
+        System.out.println("+++++++++++++++++MyClass+++++++++++++++++");
+        System.out.println("1. Buat kelas baru\n2. Lihat kelas\n3. Presensi\n4.Exit");
         System.out.print("Masukkan Pilihan : ");
         int pilih = sc.nextInt();
         switch (pilih) {
             case 1:
-
-                makeClass();
+                crateclass();
                 break;
-
             case 2:
                 if (conclass < 1) {
                     System.out.println("Belum ada kelas");
@@ -50,68 +47,106 @@ public class main {
                     lihDat();
                 }
             case 3:
+                if (tambahKel < 1) {
+                    System.out.println("PRESENSI TIDAK TERSEDIA!");
+                    System.out.println("TAMBAHKAN KELAS TERLEBIH DAHULU");
+                } else {
+                    classcontrol();
+                }
+            case 4:
                 break;
             default:
                 System.out.println("Pilihan anda tidak sesuai");
                 System.out.println("!_________________________!");
                 mainMenu();
         }
-
     }
 
-    public static void makeClass() {
+    public static void classcontrol() {
+        System.out.println("==========================================");
+        System.out.println("\tSELAMAT DATANG DI MYCLASS");
+        System.out.println(" \tSILAHKAN PILIH KELAS");
+        System.out.println("==========================================");
         Scanner sc = new Scanner(System.in);
-        conclass++;
-        System.out.println("KELAS BARU");
-        System.out.print("NAMA KELAS : ");
-        kelas[tambahKel][0] = sc.next();
-        System.out.print("TOTAL MHS : ");
-        kelas[tambahKel][1] = sc.next();
-        int totalMhs = Integer.parseInt(kelas[tambahKel][1]);
-        presensiMhs(totalMhs);
+        System.out.println("===========Lihat Kelas===========");
+        System.out.println("List Kelas : ");
+        for (int i = 0; i < tambahKel; i++) {
+            System.out.printf("%d. %s\n", (i + 1), kelas[i][0]);
+        }
+        System.out.print("PILIH KELAS :");
+        presensiMhs(sc.nextInt());
     }
 
-    static void presensiMhs(int totalMhs) {
+    static void presensiMhs(int pilihan) {
+        System.out.println("KELAS" + kelas[(pilihan - 1)][0]);
+        String namaKelas = kelas[(pilihan - 1)][0];
         DateFormat DateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         Date TIME = new Date();
-        Scanner sc = new Scanner(System.in);
-        System.out.println("=================================");
-        System.out.println("SELAMAT DATANG SILAHKAN PRESENSI DISINI");
-        //inisialisasi baru panjang data mhs
-        String namaKelas = kelas[(conclass - 1)][0];
 
+        Scanner sc = new Scanner(System.in);
+        System.out.println("==========================================");
+        System.out.printf("\tSELAMAT DATANG DI KELAS %s", namaKelas.toUpperCase());
+        System.out.println(" \tSILAHKAN PRESENSI DISINI");
+        System.out.println("==========================================");
+        //inisialisasi baru panjang data mhs
+        String tambahPresensi;
+        int totalMhs = 0;
         //code fakultas
+        int i = 0;
         String[] fakultas = {"51", "52", "53", "31"};
         String[] univ = {"14"};
         //membuat data untuk menampung banyak inputan mhs
         //melakukan presensi 
         int hadir = 0, ijin = 0, alpha = 0;
-        for (int i = 0; i < totalMhs; i++) {
+        do {
             mhs[countMHS][5] = namaKelas;
             System.out.println("Presensi ke-" + (i + 1));
             mhs[countMHS][0] = String.valueOf(i + 1);
             System.out.print("Masukan Nama : ");
             mhs[countMHS][1] = sc.next();
-            System.out.print("Masukan NIM : ");
-            mhs[countMHS][2] = sc.next();
-            String valid = mhs[i][2].substring(4, 6);
-            //Valid NIM
-            if (!(valid.equals(univ[0]))) {
-                System.out.println("Bukan MHS Sadhar");
-            }
-            String nimmhs = mhs[countMHS][2].substring(2, 4);
-            if (nimmhs.equals(fakultas[0]) && mhs[countMHS][2].length() == 9) {
-                mhs[countMHS][3] = "Elektro";
-            } else if (nimmhs.equals(fakultas[1]) && mhs[countMHS][2].length() == 9) {
-                mhs[countMHS][3] = "Mesin";
-            } else if (nimmhs.equals(fakultas[2]) && mhs[countMHS][2].length() == 9) {
-                mhs[countMHS][3] = "Informatika";
-            } else if (nimmhs.equals(fakultas[3]) && mhs[countMHS][2].length() == 9) {
-                mhs[countMHS][3] = "Matematika";
-            } else {
-                mhs[countMHS][3] = "Tidak Terdaftar";
-                System.out.println("Anda Bukan Mahasiswa FST");
-            }
+            int knt;
+            do {
+                knt = 0;
+                System.out.print("Masukan NIM  : ");
+                mhs[countMHS][2] = sc.next();
+                String valid = mhs[countMHS][2].substring(4, 6);
+                //Valid NIM
+
+                if (!(valid.equals(univ[0]))) {
+                    System.out.println("Bukan MHS Sadhar");
+                }
+                if (mhs[countMHS][2].length() >= 10) {
+                    System.out.println("\"jumlah input melebihi batas\"");
+                }
+                String angkatan = mhs[countMHS][2].substring(0, 2);
+                mhs[countMHS][7] = angkatan;
+                System.out.println("angkatan : " + mhs[countMHS][7]);
+                String nimmhs = mhs[countMHS][2].substring(2, 4);
+                if (nimmhs.equals(fakultas[0]) && mhs[countMHS][2].length() == 9) {
+                    mhs[countMHS][3] = "Elektro";
+                } else if (nimmhs.equals(fakultas[1]) && mhs[countMHS][2].length() == 9) {
+                    mhs[countMHS][3] = "Mesin";
+                } else if (nimmhs.equals(fakultas[2]) && mhs[countMHS][2].length() == 9) {
+                    mhs[countMHS][3] = "Informatika";
+                } else if (nimmhs.equals(fakultas[3]) && mhs[countMHS][2].length() == 9) {
+                    mhs[countMHS][3] = "Matematika";
+                } else {
+                    mhs[countMHS][3] = "Tidak Terdaftar";
+                    System.out.println("Anda Bukan Mahasiswa FST");
+                }
+                for (int j = 0; j <= i; j++) {
+                    if (i > 0) {
+                        for (int k = 0; k < j; k++) {
+                            if (mhs[k][2].equals(mhs[j][2]) && !(mhs[k][1].equals(mhs[j][1]))) {
+                                System.out.println("NIM TIDAK BOLEH SAMA !");
+                                System.out.println("MOHON PASTIKAN NIM SUDAH BENAR");
+                                System.out.println("Nama : " + mhs[k][1] + " dengan " + mhs[j][1] + " sama");
+                                knt = knt + 1;
+                            }
+                        }
+                    }
+                }
+            } while (knt >= 1);
             System.out.println("====PILIH PRESENSI====");
             System.out.println("1. Hadir");
             System.out.println("2. Izin");
@@ -131,8 +166,21 @@ public class main {
             mhs[countMHS][4] = DateFormat.format(TIME);
             System.out.println("Record : " + mhs[countMHS][4]);
             System.out.println("=================================");
+            i++;
+            System.out.println("Tambah Presensi Lagi untuk Kelas " + namaKelas);
+            System.out.println("y/t");
+            System.out.print("Pilihan Anda : ");
+            tambahPresensi = sc.next();
+            int totalHadir = hadir;
+            int totalIzin = ijin;
+            int totalAlpa = alpha;
+            int total = hadir + ijin + alpha;
             countMHS++;
-        }
+            totalMhs++;
+            kelas[banyakKelas][1] = String.valueOf(total);
+            banyakKelas++;
+        } while (tambahPresensi.equals("y"));
+        resolf();
 //        for (int j = 0; j < totalMhs; j++) {
 //            System.out.println("=================================");
 //            System.out.println("Data MHS : ");
@@ -143,20 +191,19 @@ public class main {
 //            System.out.println("Time Record :" + mhs[j][4]);
 //            System.out.println("Nama Kelas : " + mhs[j][5]);
 //            System.out.println("Presensi : " + mhs[j][6]);
+//                                              mhs[j][7]
 //        }
-        tambahKel++;
-        banyakKelas++;
-        resolf();
+
     }
 
     static void lihDat() {
-        System.out.println("============Lihat Kelas============");
+        System.out.println("===========Lihat Kelas===========");
         System.out.println("List Kelas : ");
-        for (int i = 0; i < banyakKelas; i++) {
+        for (int i = 0; i < tambahKel; i++) {
             System.out.printf("%d. %s\n", (i + 1), kelas[i][0]);
         }
         //milih kelas array
-        System.out.println("Pilih kelas : ");
+        System.out.print("Pilih kelas : ");
         Scanner sc = new Scanner(System.in);
         lookupArray(sc.nextInt());
     }
@@ -170,26 +217,15 @@ public class main {
 
     public static void lookupArray(int pilih) {
         Scanner sc = new Scanner(System.in);
+        System.out.println("-------------------------");
         System.out.println("Mata kuliah : " + kelas[(pilih - 1)][0]);
+        String matkul = kelas[(pilih - 1)][0];
+        System.out.println("Matkul : " + matkul);
+        System.out.println("Mhs[5] : " + mhs[(pilih - 1)][5]);
         String totalMhs = kelas[(pilih - 1)][1];
-
         System.out.println("Total Mahasiswa : " + totalMhs);
-        int hadir = 0, izin = 0, absent = 0;
-//        for (int i = 0; i < mhs.length; i++) {
-//            if (mhs[i][6].equals("Hadir")) {
-//                hadir += 1;
-//            } else if (mhs[i][6].equals("Izin")) {
-//                izin += 1;
-//            } else if (mhs[i][6].equals("Absent")) {
-//                absent += 1;
-//            }
-//        }
-        System.out.println("Hadir\t: " + hadir);
-
-        System.out.println("Izin\t: " + izin);
-        System.out.println("Absent\t: " + absent);
         //update dr lihdatAngger move to mainMenuDodo
-        System.out.println("=======================");
+        System.out.println("-------------------------");
         System.out.println("Menu\t:\n1. Lihat Data Mahasiswa\n2. Kembali Menu utama\n3. Exit");
         System.out.print("Pilih\t: ");
         int pilihan = sc.nextInt();
@@ -205,61 +241,78 @@ public class main {
                 System.out.println("Pilihan anda tidak sesuai");
                 System.out.println("___________________________");
                 mainMenu();
-
         }
-    }
-
-    static void presensiControl() {
-        int countTI = 0, countEL = 0, countTM = 0, countMTK = 0, countOther = 0;
-
-        String[][] prod = {{"1", "Elektro"},
-        {"2", "Elektro"},
-        {"3", "Mesin"},
-        {"4", "Informatika"},
-        {"5", "Matematika"}};
-
-        for (String[] prod1 : prod) {
-            if ("Elektro".equals(prod1[1])) {
-                countEL += 1;
-            } else if ("mesin".equals(prod1[1])) {
-                countTM += 1;
-            } else if ("Informatika".equals(prod1[1])) {
-                countTI += 1;
-            } else if ("Matematika".equals(prod1[1])) {
-                countMTK += 1;
-            } else {
-                countOther += 1;
-            }
-            int data = Integer.parseInt(prod1[1]);
-            String nameof = prod1[1];
-            int max = 0;
-            if (data > max) {
-                System.out.println("PRODI : " + nameof);
-            }
-
-        }
-        int data = Integer.parseInt(prod[0][1]);
     }
 
     public static void tamplihMhs(int pilih) {
         String namaKelas = kelas[pilih][0];
+        int hdCount = 0, ijCount = 0, AbCount = 0;
+        int countTI = 0, countEL = 0, countTM = 0, countMTK = 0, countOther = 0;
         System.out.printf("KELAS : %s\n", namaKelas);
-        System.out.println("ID.\tNAMA\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\tMata Kuliah\t\tPresensi");
-        System.out.print("======================================================================================================");
-        System.out.println("====================================================================================================");
+        System.out.println("ID.\tNAMA\t\t\t\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\t\tMata Kuliah\t\tPresensi\t\tAngkatan");
+        System.out.print("==========================================================================================================");
+        System.out.println("========================================================================================================");
 
         //listing index mhs 
         for (int j = 0; j < mhs.length; j++) {
             if (namaKelas.equals(mhs[j][5])) {
-                System.out.printf("%s\t%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6]);
+                System.out.printf("%s\t%s\t\t\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6], mhs[j][7]);
+                System.out.println("");
+                if (mhs[j][6].equalsIgnoreCase("Hadir")) {
+                    hdCount++;
+                } else if (mhs[j][6].equalsIgnoreCase("Izin")) {
+                    ijCount++;
+                } else if (mhs[j][6].equalsIgnoreCase("Alpha")) {
+                    AbCount++;
+                }
+
+                if ("Elektro".equalsIgnoreCase(mhs[j][3])) {
+                    countEL += 1;
+                } else if ("Mesin".equalsIgnoreCase(mhs[j][3])) {
+                    countTM += 1;
+                } else if ("Informatika".equalsIgnoreCase(mhs[j][3])) {
+                    countTI += 1;
+                } else if ("Matematika".equalsIgnoreCase(mhs[j][3])) {
+                    countMTK += 1;
+                } else {
+                    countOther += 1;
+                }
             }
-//            System.out.printf("%s\t%s\t\t%s\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4]);
         }
-        System.out.print("======================================================================================================");
-        System.out.println("=====================================================================================================");
+        System.out.print("==========================================================================================================\n");
+        System.out.printf("Total Hadir : %d \t\tTotal Ijin : %d\t\tTotal Absent :%d\n", hdCount, ijCount, AbCount);
+        System.out.print("==========================================================================================================\n");
+        System.out.printf("\t\tElektro : %d \t\tTeknik Mesin : %d\t\tTeknik Informatika :%d\t\tPendidikan Matematika :%d\t\tLainya : %d\n", countEL, countTM, countTI, countMTK, countOther);
+        System.out.println("========================================================================================================\n");
     }
 
     public static void dataCompare() {
-        System.out.println("E");
+        Scanner inp = new Scanner(System.in);
+        int pil1 = 0, pil2 = 0;
+        if (tambahKel > 1) {
+            System.out.println("Pilih Kelas Untuk Di Bandingkan");
+            for (int i = 0; i < tambahKel; i++) {
+                System.out.printf("%d. %s\n", (i + 1), kelas[i][0]);
+            }
+            System.out.printf("Pilihan Anda : ");
+
+            System.out.printf("Pilihan Ke 1 : ");
+            pil1 = inp.nextInt();
+            System.out.printf("Pilihan Ke 2 : ");
+            pil2 = inp.nextInt();
+            System.out.println("Nama Kelas 1 : " + kelas[(pil1 - 1)][0]);
+            System.out.println("Nama Kelas 1 : " + kelas[(pil2 - 1)][0]);
+        }
+    }
+
+    public static void crateclass() {
+        Scanner sc = new Scanner(System.in);
+        conclass++;
+        System.out.println("*************************");
+        System.out.println("\tKELAS BARU");
+        System.out.print("NAMA KELAS : ");
+        kelas[tambahKel][0] = sc.nextLine();
+        tambahKel++;
+        mainMenu();
     }
 }
