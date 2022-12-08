@@ -57,7 +57,7 @@ public class lihDataAngger {
         System.out.println("Banyak KElas" + banyakKelas);
         DateFormat DateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         Date TIME = new Date();
-        mhs = new String[totalMhs][5];
+      
         //System.out.println("mhs length : " + mhs.length);
         Scanner sc = new Scanner(System.in);
 
@@ -120,12 +120,12 @@ public class lihDataAngger {
     public static void tamplihMhs() {
         System.out.println("ID.\tNAMA\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record");
         System.out.print("==============================================");
-        System.out.println("==============================================");
+        System.out.println("==========================================");
         for (int j = 0; j < mhs.length; j++) {
             System.out.printf("%s\t%s\t\t%s\t\t%s\t\t%s\n",mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3],mhs[j][4] );
         }
         System.out.print("==============================================");
-        System.out.println("==============================================");
+        System.out.println("==========================================");
     }
 
     static void lihDat() {
