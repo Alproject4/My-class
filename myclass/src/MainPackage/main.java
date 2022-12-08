@@ -24,6 +24,7 @@ public class main {
     public static String[][] kelas = new String[10][10];
     static String[][] mhs = new String[90][10];
 
+   public static int countMHS = 0; 
     static int tambahKel = 0;
     public static int banyakKelas = 0;
     public static int conclass = 0;
@@ -88,31 +89,29 @@ public class main {
         String[] univ = {"14"};
         //membuat data untuk menampung banyak inputan mhs
         //melakukan presensi 
-        int hadir = 0;
-        int izin = 0;
-        int absent = 0;
-        for (int i = 0; i < totalMhs; i++) {
-            mhs[i][5] = namaKelas;
+       int hadir = 0, ijin = 0, alpha=0;
+        for (int i = 0 ; i < totalMhs; i++) {
+            mhs[countMHS][5] = namaKelas;
             System.out.println("Presensi ke-" + (i + 1));
-            mhs[i][0] = String.valueOf(i + 1);
+            mhs[countMHS][0] = String.valueOf(i + 1);
             System.out.print("Masukan Nama : ");
-            mhs[i][1] = sc.next();
+            mhs[countMHS][1] = sc.next();
             System.out.print("Masukan NIM : ");
-            mhs[i][2] = sc.next();
+            mhs[countMHS][2] = sc.next();
             String valid = mhs[i][2].substring(4, 6);
             //Valid NIM
             if (!(valid.equals(univ[0]))) {
                 System.out.println("Bukan MHS Sadhar");
             }
             String nimmhs = mhs[i][2].substring(2, 4);
-            if (nimmhs.equals(fakultas[0]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Elektro";
-            } else if (nimmhs.equals(fakultas[1]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Mesin";
-            } else if (nimmhs.equals(fakultas[2]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Informatika";
-            } else if (nimmhs.equals(fakultas[3]) && mhs[i][2].length() == 9) {
-                mhs[i][3] = "Matematika";
+            if (nimmhs.equals(fakultas[0]) && mhs[countMHS][2].length() == 9) {
+                mhs[countMHS][3] = "Elektro";
+            } else if (nimmhs.equals(fakultas[1]) && mhs[countMHS][2].length() == 9) {
+                mhs[countMHS][3] = "Mesin";
+            } else if (nimmhs.equals(fakultas[2]) && mhs[countMHS][2].length() == 9) {
+                mhs[countMHS][3] = "Informatika";
+            } else if (nimmhs.equals(fakultas[3]) && mhs[countMHS][2].length() == 9) {
+                mhs[countMHS][3] = "Matematika";
             } else {
                 System.out.println("Anda Bukan Mahasiswa FST");
             }
@@ -123,31 +122,31 @@ public class main {
             System.out.print("Masukan Anda : ");
             int pilpres = sc.nextInt();
             if (pilpres == 1) {
-                mhs[i][6] = "Hadir";
+                mhs[countMHS][6] = "Hadir";
                 hadir += 1;
             } else if (pilpres == 2) {
-                mhs[i][6] = "Izin";
-                izin += 1;
+                mhs[countMHS][6] = "Izin";
+                ijin += 1;
             } else if (pilpres == 3) {
-                mhs[i][6] = "Alpha";
-                absent += 1;
+                mhs[countMHS][6] = "Alpha";
+                alpha += 1;
             }
-            mhs[i][4] = DateFormat.format(TIME);
-            System.out.println("Record : " + mhs[i][4]);
-
+            mhs[countMHS][4] = DateFormat.format(TIME);
+            System.out.println("Record : " + mhs[countMHS][4]);
             System.out.println("=================================");
+            countMHS++;
         }
-        for (int j = 0; j < totalMhs; j++) {
-            System.out.println("=================================");
-            System.out.println("Data MHS : ");
-            System.out.println("ID : " + mhs[j][0]);
-            System.out.println("Nama : " + mhs[j][1]);
-            System.out.println("NIM : " + mhs[j][2]);
-            System.out.println("Fakultas : " + mhs[j][3]);
-            System.out.println("Time Record :" + mhs[j][4]);
-            System.out.println("Nama Kelas : " + mhs[j][5]);
-            System.out.println("Presensi : " + mhs[j][6]);
-        }
+//        for (int j = 0; j < totalMhs; j++) {
+//            System.out.println("=================================");
+//            System.out.println("Data MHS : ");
+//            System.out.println("ID : " + mhs[j][0]);
+//            System.out.println("Nama : " + mhs[j][1]);
+//            System.out.println("NIM : " + mhs[j][2]);
+//            System.out.println("Fakultas : " + mhs[j][3]);
+//            System.out.println("Time Record :" + mhs[j][4]);
+//            System.out.println("Nama Kelas : " + mhs[j][5]);
+//            System.out.println("Presensi : " + mhs[j][6]);
+//        }
         tambahKel++;
         banyakKelas++;
         resolf();
@@ -166,9 +165,7 @@ public class main {
     }
 
     public static void resolf() {
-
         System.out.println("Data berhasil disimpan");
-
         System.out.println("=================================");
         System.out.println();
         mainMenu();
@@ -202,7 +199,7 @@ public class main {
         System.out.println("=======================");
         switch (pilihan) {
             case 1:
-                tamplihMhs(pilih);
+                tamplihMhs(pilih-1);
             case 2:
                 mainMenu();
             case 3:
@@ -248,11 +245,13 @@ public class main {
     }
 
     public static void tamplihMhs(int pilih) {
-        String namaKelas = kelas[(pilih - 1)][0];
+        String namaKelas = kelas[pilih][0];
         System.out.printf("KELAS : %s\n", namaKelas);
         System.out.println("ID.\tNAMA\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\tMata Kuliah\t\tPresensi");
         System.out.print("======================================================================================================");
         System.out.println("====================================================================================================");
+        
+        //listing index mhs 
         for (int j = 0; j < mhs.length; j++) {
             if (namaKelas.equals(mhs[j][5])) {
                 System.out.printf("%s\t%s\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6]);
@@ -263,6 +262,8 @@ public class main {
         System.out.println("=====================================================================================================");
     }
 
+    
+    
     public static void dataCompare() {
         System.out.println("E");
     }
