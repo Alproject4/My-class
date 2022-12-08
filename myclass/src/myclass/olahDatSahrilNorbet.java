@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -31,28 +32,40 @@ public class olahDatSahrilNorbet {
         {"4", "Informatika"},
         {"5", "Matematika"}};
 
-        for (String[] prod1 : prod) {
-            if ("Elektro".equals(prod1[1])) {
+        for (int i = 0; i < prod.length ; i++) {
+            if ("Elektro".equals(prod[i][1])) {
                 countEL += 1;
-            } else if ("mesin".equals(prod1[1])) {
+            } else if ("mesin".equals(prod[i][1])) {
                 countTM += 1;
-            } else if ("Informatika".equals(prod1[1])) {
+            } else if ("Informatika".equals(prod[i][1])) {
                 countTI += 1;
-            } else if ("Matematika".equals(prod1[1])) {
+            } else if ("Matematika".equals(prod[i][1])) {
                 countMTK += 1;
             } else {
                 countOther += 1;
             }
-            int data = Integer.parseInt(prod1[1]);
-            String nameof = prod1[1];
-            int max=0;
-            if(data > max){
-                System.out.println("PRODI : "+nameof);
-            }
-            
         }
-        int data = Integer.parseInt(prod[0][1]);
+        System.out.println(countEL);
+//
+//        for (String[] prod1 : prod) {
+//            if ("Elektro".equals(prod1[1])) {
+//                countEL += 1;
+//            } else if ("mesin".equals(prod1[1])) {
+//                countTM += 1;
+//            } else if ("Informatika".equals(prod1[1])) {
+//                countTI += 1;
+//            } else if ("Matematika".equals(prod1[1])) {
+//                countMTK += 1;
+//            } else {
+//                countOther += 1;
+//            }
+//            int data = Integer.parseInt(prod1[1]);
+//            String nameof = prod1[1];
+//            int max = 0;
+//            if (data > max) {
+//                System.out.println("PRODI : " + nameof);
+//            }
+//        }
     }
-    
-   
+
 }
