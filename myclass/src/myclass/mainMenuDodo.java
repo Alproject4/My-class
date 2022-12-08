@@ -208,15 +208,13 @@ public class mainMenuDodo {
         Scanner sc = new Scanner(System.in);
         lookupArray(sc.nextInt());
     }
-
-    //engak terpakai
+   
     public static void resolf() {
         System.out.println("Data berhasil disimpan");
         System.out.println("=================================");
         System.out.println();
         mainMenu();
     }
-
     public static void lookupArray(int pilih) {
         Scanner sc = new Scanner(System.in);
         System.out.println("-------------------------");
@@ -245,40 +243,6 @@ public class mainMenuDodo {
                 mainMenu();
         }
     }
-
-    static void presensiControl() {
-        int countTI = 0, countEL = 0, countTM = 0, countMTK = 0, countOther = 0;
-
-        String[][] prod = {{"1", "Elektro"},
-        {"2", "Elektro"},
-        {"3", "Mesin"},
-        {"4", "Informatika"},
-        {"5", "Matematika"}};
-
-        for (String[] prod1 : prod) {
-            if ("Elektro".equals(prod1[1])) {
-                countEL += 1;
-            } else if ("mesin".equals(prod1[1])) {
-                countTM += 1;
-            } else if ("Informatika".equals(prod1[1])) {
-                countTI += 1;
-            } else if ("Matematika".equals(prod1[1])) {
-                countMTK += 1;
-            } else {
-
-                countOther += 1;
-            }
-            int data = Integer.parseInt(prod1[1]);
-            String nameof = prod1[1];
-            int max = 0;
-            if (data > max) {
-                System.out.println("PRODI : " + nameof);
-            }
-
-        }
-        int data = Integer.parseInt(prod[0][1]);
-    }
-
     public static void tamplihMhs(int pilih) {
         String namaKelas = kelas[pilih][0];
         String Hd = mhs[pilih][6];
