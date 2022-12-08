@@ -65,7 +65,6 @@ public class mainMenuDodo {
                 mainMenu();
         }
     }
-
     public static void classcontrol() {
         System.out.println("==========================================");
         System.out.println("\tSELAMAT DATANG DI MYCLASS");
@@ -79,9 +78,7 @@ public class mainMenuDodo {
         }
         System.out.print("PILIH KELAS :");
         presensiMhs(sc.nextInt());
-
     }
-
     static void presensiMhs(int pilihan) {
         System.out.println("KELAS" + kelas[(pilihan - 1)][0]);
         String namaKelas = kelas[(pilihan - 1)][0];
@@ -109,19 +106,20 @@ public class mainMenuDodo {
             mhs[countMHS][0] = String.valueOf(i + 1);
             System.out.print("Masukan Nama : ");
             mhs[countMHS][1] = sc.next();
-            boolean com = true;
+            int knt;
             do {
+                knt = 0;
                 System.out.print("Masukan NIM  : ");
                 mhs[countMHS][2] = sc.next();
                 String valid = mhs[countMHS][2].substring(4, 6);
                 //Valid NIM
+
                 if (!(valid.equals(univ[0]))) {
                     System.out.println("Bukan MHS Sadhar");
                 }
                 if (mhs[countMHS][2].length() >= 10) {
                     System.out.println("\"jumlah input melebihi batas\"");
                 }
-
                 String angkatan = mhs[countMHS][2].substring(0, 2);
                 mhs[countMHS][7] = angkatan;
                 System.out.println("angkatan : " + mhs[countMHS][7]);
@@ -138,20 +136,18 @@ public class mainMenuDodo {
                     mhs[countMHS][3] = "Tidak Terdaftar";
                     System.out.println("Anda Bukan Mahasiswa FST");
                 }
-                String compareNIM = mhs[countMHS][2];
-                if (i > 0) {
-                    for (int j = 0; j < i; j++) {
-                        if (compareNIM.equals(mhs[j][2]) && mhs[j][5].equals(namaKelas)) {
-                            System.out.println("");
-                            System.out.println("Inputan NIM sama");
-                            com = false;
-                        } else {
-                            System.out.println("BERHASIL");
-                            com = true;
+                for (int j = 0; j <= i; j++) {
+                    if (i > 0) {
+                        for (int k = 0; k < j; k++) {
+                            if (mhs[k][2].equals(mhs[j][2]) && !(mhs[k][1].equals(mhs[j][1]))) {
+                                System.out.println("Nomor : " + mhs[k][2] + " dan " + mhs[j][2] + " sama");
+                                System.out.println("KNTOL");
+                                knt = knt + 1;
+                            }
                         }
                     }
                 }
-            } while (com == false);
+            } while (knt >= 1);
             System.out.println("====PILIH PRESENSI====");
             System.out.println("1. Hadir");
             System.out.println("2. Izin");
@@ -200,7 +196,6 @@ public class mainMenuDodo {
 //        }
 
     }
-
     static void lihDat() {
         System.out.println("===========Lihat Kelas===========");
         System.out.println("List Kelas : ");

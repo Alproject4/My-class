@@ -9,11 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-import static myclass.lihDataAngger.kelas;
-import static myclass.lihDataAngger.mainMenu;
-import static myclass.lihDataAngger.tamplihMhs;
-import static myclass.mainMenuDodo.conclass;
-import static myclass.mainMenuDodo.makeClass;
 
 /**
  *
