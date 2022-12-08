@@ -104,7 +104,7 @@ public class main {
             if (!(valid.equals(univ[0]))) {
                 System.out.println("Bukan MHS Sadhar");
             }
-            String nimmhs = mhs[i][2].substring(2, 4);
+            String nimmhs = mhs[countMHS][2].substring(2, 4);
             if (nimmhs.equals(fakultas[0]) && mhs[countMHS][2].length() == 9) {
                 mhs[countMHS][3] = "Elektro";
             } else if (nimmhs.equals(fakultas[1]) && mhs[countMHS][2].length() == 9) {
