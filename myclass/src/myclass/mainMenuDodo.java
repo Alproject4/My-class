@@ -9,9 +9,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
-import static myclass.lihDataAngger.kelas;
-import static myclass.lihDataAngger.mainMenu;
-import static myclass.lihDataAngger.tamplihMhs;
 import static myclass.mainMenuDodo.conclass;
 
 /**
@@ -140,8 +137,9 @@ public class mainMenuDodo {
                     if (i > 0) {
                         for (int k = 0; k < j; k++) {
                             if (mhs[k][2].equals(mhs[j][2]) && !(mhs[k][1].equals(mhs[j][1]))) {
-                                System.out.println("Nomor : " + mhs[k][2] + " dan " + mhs[j][2] + " sama");
-                                System.out.println("KNTOL");
+                                System.out.println("NIM TIDAK BOLEH SAMA !");
+                                System.out.println("MOHON PASTIKAN NIM SUDAH BENAR");
+                                System.out.println("Nama : " + mhs[k][1] + " dengan " + mhs[j][1] + " sama");
                                 knt = knt + 1;
                             }
                         }
@@ -280,6 +278,8 @@ public class mainMenuDodo {
 
     public static void tamplihMhs(int pilih) {
         String namaKelas = kelas[pilih][0];
+        String Hd = mhs[pilih][6];
+        int hdCount=0, ijCount = 0, AbCount=0; 
         System.out.printf("KELAS : %s\n", namaKelas);
         System.out.println("ID.\tNAMA\t\t\t\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\t\tMata Kuliah\t\tPresensi\t\tAngkatan");
         System.out.print("==========================================================================================================");
@@ -288,12 +288,21 @@ public class mainMenuDodo {
         //listing index mhs 
         for (int j = 0; j < mhs.length; j++) {
             if (namaKelas.equals(mhs[j][5])) {
-                System.out.printf("%s\t%s\t\t\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6], mhs[j][7]);
+                System.out.printf("%s\t%s\t\t\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6], mhs[j][7]);
+                System.out.println("");
+                if(mhs[j][6].equalsIgnoreCase("Hadir")){
+                    ijCount++;
+                }else if(mhs[j][6].equalsIgnoreCase("Izin")){
+                    hdCount++;
+                }else if(mhs[j][6].equalsIgnoreCase("Alpha")){
+                    AbCount++;
+                }
             }
 //            System.out.printf("%s\t%s\t\t%s\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4]);
         }
-        System.out.print("============================================================================================");
-        System.out.println("==========================================================================================");
+      System.out.print("==========================================================================================================");
+           System.out.printf("\t\tTotal Hadir : %d \t\tTotal Ijin : %d\t\tTotal Absent :%d\n",hdCount,ijCount,AbCount);
+        System.out.println("========================================================================================================");
     }
 
     public static void crateclass() {
