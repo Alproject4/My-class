@@ -17,8 +17,8 @@ import static myclass.mainMenuDodo.conclass;
  */
 public class mainMenuDodo {
 
-    public static String[][] kelas = new String[10][10];
-    static String[][] mhs = new String[90][10];
+    public static String[][] kelas = new String[100][10];
+    static String[][] mhs = new String[100][10];
     public static int countMHS = 0;
     static int tambahKel = 0;
     public static int banyakKelas = 0;
@@ -86,7 +86,7 @@ public class mainMenuDodo {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("==========================================");
-        System.out.printf("\tSELAMAT DATANG DI KELAS %s", namaKelas.toUpperCase());
+        System.out.printf("\tSELAMAT DATANG DI KELAS %s\n", namaKelas.toUpperCase());
         System.out.println(" \tSILAHKAN PRESENSI DISINI");
         System.out.println("==========================================");
         //inisialisasi baru panjang data mhs
@@ -140,7 +140,7 @@ public class mainMenuDodo {
                             if (mhs[k][2].equals(mhs[j][2]) && !(mhs[k][1].equals(mhs[j][1]))) {
                                 System.out.println("NIM TIDAK BOLEH SAMA !");
                                 System.out.println("MOHON PASTIKAN NIM SUDAH BENAR");
-                                System.out.println("Nama : " + mhs[k][1] + " dengan " + mhs[j][1] + " sama");
+                                System.out.println("NIM : " + mhs[k][1] + " dengan " + mhs[j][1] + " sama");
                                 knt = knt + 1;
                             }
                         }
@@ -195,13 +195,14 @@ public class mainMenuDodo {
         Scanner sc = new Scanner(System.in);
         lookupArray(sc.nextInt());
     }
-   
+
     public static void resolf() {
         System.out.println("Data berhasil disimpan");
         System.out.println("=================================");
         System.out.println();
         mainMenu();
     }
+
     public static void lookupArray(int pilih) {
         Scanner sc = new Scanner(System.in);
         System.out.println("-------------------------");
@@ -225,6 +226,7 @@ public class mainMenuDodo {
                 mainMenu();
         }
     }
+
     public static void tamplihMhs(int pilih) {
         String namaKelas = kelas[pilih][0];
         int hdCount = 0, ijCount = 0, AbCount = 0;
@@ -259,56 +261,59 @@ public class mainMenuDodo {
                 }
             }
         }
+        int totalMhs = AbCount + ijCount + hdCount;
         System.out.print("==========================================================================================================\n");
-        System.out.printf("Total Hadir : %d \t\tTotal Ijin : %d\t\tTotal Absent :%d\n", hdCount, ijCount, AbCount);
-         System.out.print("==========================================================================================================\n");
+        System.out.printf("Total Hadir : %d \t\tTotal Ijin : %d\t\tTotal Absent :%d\t\tTotal Mahasiswa : %d \n", hdCount, ijCount, AbCount, totalMhs);
+        System.out.print("==========================================================================================================\n");
         System.out.printf("Elektro : %d \t\tTeknik Mesin : %d\t\tTeknik Informatika :%d\t\tPendidikan Matematika :%d\t\tLainya : %d\n", countEL, countTM, countTI, countMTK, countOther);
         System.out.println("========================================================================================================\n");
-      
-        int totalS = hdCount +ijCount +AbCount; 
-        
-        if(tambahKel > 2){
-           dataCompare(pilih, totalS,hdCount );
-        }else{
+
+        if (tambahKel > 1) {
+            dataCompare(pilih, totalMhs, hdCount);
+        } else {
             System.out.println("Belum Ada Kelas Lain Untuk Dibandingkan");
             mainMenu();
         }
     }
-    public static void dataCompare(int pil, int totalH, int Hd){
-        String compareKls = " " ;
-        if(pil == 1){
-            compareKls = kelas[(pil+1)][0];
-        }else if(pil > 1){
-            compareKls = kelas[(pil-1)][0];
+
+    public static void dataCompare(int pil, int totalH, int Hd) {
+        String compareKls = " ";
+        if (pil == 0) {
+            compareKls = kelas[pil + 1][0];
+        } else if (pil > 1) {
+            compareKls = kelas[(pil - 1)][0];
         }
         String myKls = kelas[pil][0];
         int hdCount = 0;
-        int totalCom =0;
-        System.out.println("Nama Kelas Anda : "+myKls);
-        System.out.println("Nama Kelas Yang Dibandingkan : "+compareKls);
-        for(int i = 0; i<mhs.length; i++){
-              if (compareKls.equals(mhs[i][5])) {
-                  totalCom++;
-                   if (mhs[i][6].equalsIgnoreCase("Hadir")) {
+        int totalCom = 0;
+        System.out.println("Nama Kelas Anda : " + myKls);
+        System.out.println("Nama Kelas Yang Dibandingkan : " + compareKls);
+        for (int i = 0; i < mhs.length; i++) {
+            if (compareKls.equals(mhs[i][5])) {
+                totalCom++;
+                if (mhs[i][6].equalsIgnoreCase("Hadir")) {
                     hdCount++;
-                } 
-              }
+                }
+            }
         }
         int compareTotal = totalH - totalCom;
-        if(totalH > totalCom){
-            System.out.println("Total Mahasiswa Dikelas Anda Lebih Banyak Sebanyak : "+compareTotal);
-        }else{
-             System.out.println("Total Mahasiswa Dikelas Anda Lebih Sedikit Sebanyak : "+compareTotal);
+        if (totalH > totalCom) {
+
+            System.out.println("Total Mahasiswa Dikelas Anda Lebih Banyak Sebanyak : " + compareTotal);
+        } else {
+            System.out.println("Total Mahasiswa Dikelas Anda Lebih Sedikit Sebanyak : " + compareTotal);
         }
-        int totalHadir = hdCount - Hd;
-        if(Hd > hdCount){
-             System.out.println("Kehadiran Mahasiswa Dikelas Anda Lebih Banyak Sebanyak : "+totalHadir);
-        }else{
-             System.out.println("Kehadiran Mahasiswa Dikelas Anda Lebih Sedikit Sebanyak : "+totalHadir);
+        int totalHadir = 0;
+        if (Hd > hdCount) {
+            totalHadir = Hd - hdCount;
+            System.out.println("Kehadiran Mahasiswa Dikelas Anda Lebih Banyak Sebanyak : " + totalHadir);
+        } else {
+            totalHadir = hdCount - Hd;
+            System.out.println("Kehadiran Mahasiswa Dikelas Anda Lebih Sedikit Sebanyak : " + totalHadir);
         }
         mainMenu();
     }
-    
+
     public static void crateclass() {
         Scanner sc = new Scanner(System.in);
         conclass++;
