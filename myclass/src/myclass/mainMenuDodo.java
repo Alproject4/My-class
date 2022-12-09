@@ -5,6 +5,7 @@
  */
 package myclass;
 
+import static MainPackage.main.countMHS;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -153,6 +154,7 @@ public class mainMenuDodo {
             System.out.println("3. Alpha");
             System.out.print("Masukan Anda : ");
             int pilpres = sc.nextInt();
+            
             if (pilpres == 1) {
                 mhs[countMHS][6] = "Hadir";
                 hadir += 1;
@@ -162,6 +164,8 @@ public class mainMenuDodo {
             } else if (pilpres == 3) {
                 mhs[countMHS][6] = "Alpha";
                 alpha += 1;
+            }else{
+                System.out.println("Inputan Tidak Sesuai");
             }
             mhs[countMHS][4] = DateFormat.format(TIME);
             System.out.println("Record : " + mhs[countMHS][4]);
@@ -204,9 +208,18 @@ public class mainMenuDodo {
     }
 
     public static void lookupArray(int pilih) {
-        Scanner sc = new Scanner(System.in);
+
         System.out.println("-------------------------");
         System.out.println("Mata kuliah : " + kelas[(pilih - 1)][0]);
+        System.out.println("");
+        String matKl = kelas[(pilih - 1)][0];
+        if (matKl == null) {
+            System.out.println("Data belum Ada");
+            lihDat();
+        }
+        Scanner sc = new Scanner(System.in);
+//        System.out.println("-------------------------");
+//        System.out.println("Mata kuliah : " + kelas[(pilih - 1)][0]);
         //update dr lihdatAngger move to mainMenuDodo
         System.out.println("-------------------------");
         System.out.println("Menu\t:\n1. Lihat Data Mahasiswa\n2. Kembali Menu utama\n3. Exit");
@@ -232,13 +245,13 @@ public class mainMenuDodo {
         int hdCount = 0, ijCount = 0, AbCount = 0;
         int countTI = 0, countEL = 0, countTM = 0, countMTK = 0, countOther = 0;
         System.out.printf("KELAS : %s\n", namaKelas);
-        System.out.println("ID.\tNAMA\t\t\t\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\t\tMata Kuliah\t\tPresensi\t\tAngkatan");
+        System.out.println("ID.\tNAMA\t\t\t\t\tNIM\t\t\tFAKULTAS\t\t\tTime Record\t\t\tMata Kuliah\t\tPresensi\tAngkatan");
         System.out.print("==========================================================================================================");
         System.out.println("========================================================================================================");
         //listing index mhs 
         for (int j = 0; j < mhs.length; j++) {
             if (namaKelas.equals(mhs[j][5])) {
-                System.out.printf("%s\t%s\t\t\t\t%s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\t\t%s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6], mhs[j][7]);
+                System.out.printf("%s\t%-15s\t\t\t\t%-15s\t\t%s\t\t%s\t\t\t%s\t\t\t%s\t\t%-15s\n", mhs[j][0], mhs[j][1], mhs[j][2], mhs[j][3], mhs[j][4], mhs[j][5], mhs[j][6], mhs[j][7]);
                 System.out.println("");
                 if (mhs[j][6].equalsIgnoreCase("Hadir")) {
                     hdCount++;

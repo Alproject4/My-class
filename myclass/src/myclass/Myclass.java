@@ -14,11 +14,12 @@ public class Myclass {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        boolean a = true;
+       String b = "y";
+        
+        if(a == true && b.equals("y")){
+            System.out.println("helo");
+        }
      
     }
-    
-    public void dariHendro(){
-        System.out.println("PUKI GALON");
-    } 
-   
 }

@@ -82,7 +82,7 @@ public class main {
         String namaKelas = kelas[(pilihan - 1)][0];
         DateFormat DateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
         Date TIME = new Date();
-
+        
         Scanner sc = new Scanner(System.in);
         System.out.println("==========================================");
         System.out.printf("\tSELAMAT DATANG DI KELAS %s", namaKelas.toUpperCase());

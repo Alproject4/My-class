@@ -24,7 +24,7 @@ public class presensiGustav {
                 //Validasi NIM
                 System.out.println("Presensi ke-" + i);
                 System.out.println("Masukan Nama : ");
-                mhs[i][0] = sc.next();
+                mhs[i][0] = sc.nextLine();
                 System.out.println("Masukan NIM : ");
                 mhs[i][1] = sc.next();
                 String nimmhs = mhs[i][1].substring(2, 4);
@@ -42,6 +42,18 @@ public class presensiGustav {
                     System.out.println("\"jumlah input melebihi batas\"");
                     System.out.println("");
                 }
+                
+                //compare nim tidak boleh sama
+                if (i > 0) {
+                    String compareNIM = mhs[i][1];
+                    for (int j = 0; j < i; j++) {
+                        if (compareNIM.equals(mhs[j][1])) {
+                           
+                            System.out.println("");
+                            System.out.println("Inputan NIM sama");
+                        } 
+                    }
+                }
 
                 if (nimmhs.equals(fak[0]) && mhs[i][1].length() == 9) {
                     System.out.println("Elektro");
@@ -58,16 +70,16 @@ public class presensiGustav {
                 } else {
                     System.out.println("Anda Bukan Mahasiswa FST");
                 }
-                System.out.println("=================================");
+                System.out.println("==================================");
                 if (!(mhs[i][1].length() == 9)) {
                     System.out.println("Inputan Nim Tidak Sesuai");
                 }
 
                 //Sahril nim duplicat
             } while (!(mhs[i][1].length() == 9));
-
+            
             //Presensi
-            System.out.println("====PILIH PRESENSI====");
+            System.out.println("==========PILIH PRESENSI==========");
             System.out.println("1. Hadir");
             System.out.println("2. Izin");
             System.out.println("3. Alpha");
@@ -83,7 +95,8 @@ public class presensiGustav {
 
             String dup = mhs[i][1];
         }
-        for (int j = 0; j <= 2; j++) {
+        for (int j = 0;
+                j <= 2; j++) {
             System.out.println("==================================");
             System.out.println("Data MHS : ");
             System.out.println("Nama : " + mhs[j][0]);
